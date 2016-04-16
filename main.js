@@ -1,6 +1,6 @@
-var moment = require("./dev/dateHelper");
-var d1 = moment(new Date());
-var d2 = moment(new Date(new Date().setYear(2012)));
+var helper = require("./dev/dateHelper");
+var d1 = helper(new Date());
+var d2 = helper(new Date(new Date().setYear(2012)));
 
 console.log(d1.getDate());
 console.log(d2.getDate());
