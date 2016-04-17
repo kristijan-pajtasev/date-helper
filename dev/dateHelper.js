@@ -2,9 +2,9 @@ module.exports = function(date) {
 
     function getFormated(format) {
         return format
-            .replace(/DD/gi, getNumberForDisplay(date.getDate()))
-            .replace(/MM/gi, getNumberForDisplay(date.getMonth() + 1))
-            .replace(/YYYY/gi, getNumberForDisplay(date.getFullYear()))
+            .replace(/DD/g, getNumberForDisplay(date.getDate()))
+            .replace(/MM/g, getNumberForDisplay(date.getMonth() + 1))
+            .replace(/YYYY/g, getNumberForDisplay(date.getFullYear()))
     }
 
     function getNumberForDisplay(value) {
