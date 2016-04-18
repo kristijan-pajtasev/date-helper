@@ -1,9 +1,13 @@
 {
   "name": "date-helper-util",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dev/dateHelper",
   "scripts": {
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/kristijan-pajtasev/date-helper.git"
   },
   "author": "",
   "license": "ISC"
