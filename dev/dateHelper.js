@@ -5,6 +5,8 @@ module.exports = function(date) {
             .replace(/DD/g, getNumberForDisplay(date.getDate()))
             .replace(/MM/g, getNumberForDisplay(date.getMonth() + 1))
             .replace(/YYYY/g, getNumberForDisplay(date.getFullYear()))
+            .replace(/D/g, date.getDate() + "")
+            .replace(/M/g, (date.getMonth() + 1) + "");
     }
 
     function getNumberForDisplay(value) {
