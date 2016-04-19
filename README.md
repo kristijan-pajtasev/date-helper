@@ -25,7 +25,6 @@ date.getFormated("DD/MM/YYYY"); // outputs 03/02/2015
 
 ## TODO
 - Tests
-- Non prepended with zero placeholders
 - Hours, minutes and seconds
 - Creating from string with placeholder
 - Getting and setting date values
