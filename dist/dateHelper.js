@@ -49,9 +49,11 @@ var dateHelper =
 
 	    function getFormated(format) {
 	        return format
-	            .replace(/DD/gi, getNumberForDisplay(date.getDate()))
-	            .replace(/MM/gi, getNumberForDisplay(date.getMonth() + 1))
-	            .replace(/YYYY/gi, getNumberForDisplay(date.getFullYear()))
+	            .replace(/DD/g, getNumberForDisplay(date.getDate()))
+	            .replace(/MM/g, getNumberForDisplay(date.getMonth() + 1))
+	            .replace(/YYYY/g, getNumberForDisplay(date.getFullYear()))
+	            .replace(/D/g, date.getDate() + "")
+	            .replace(/M/g, (date.getMonth() + 1) + "");
 	    }
 
 	    function getNumberForDisplay(value) {

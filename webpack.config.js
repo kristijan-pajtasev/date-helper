@@ -2,7 +2,7 @@ module.exports = {
     entry: "./dev/dateHelper",
     output: {
         path: "dist",
-        filename: "dateHelperUtil.js",
+        filename: "dateHelper.js",
         library: "dateHelper",
         libraryTarget: "var"
     }
