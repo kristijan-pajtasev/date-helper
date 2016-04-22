@@ -71,6 +71,15 @@ var dateHelper =
 	        },
 	        getFormated: function(format) {
 	            return getFormated(format);
+	        },
+	        setDate: function(d) {
+	            date.setDate(d);
+	        },
+	        setMonth: function(m) {
+	            date.setDate(m - 1);
+	        },
+	        setYear: function(y) {
+	            date.setYear(y);
 	        }
 	    }
 	}
