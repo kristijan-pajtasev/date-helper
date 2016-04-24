@@ -73,13 +73,25 @@ var dateHelper =
 	            return getFormated(format);
 	        },
 	        setDate: function(d) {
-	            date.setDate(d);
+	            if(typeof d == "number" && d <= 31 && d > 0) {
+	                date.setDate(d);
+	            } else {
+	                throw new Error("Invalid date value: " + d);
+	            }
 	        },
 	        setMonth: function(m) {
-	            date.setDate(m - 1);
+	            if(typeof m == "number" && m <= 12 && m > 0) {
+	                date.setMonth(m - 1);
+	            } else {
+	                throw new Error("Invalid date value: " + m);
+	            }
 	        },
 	        setYear: function(y) {
-	            date.setYear(y);
+	            if(typeof y == "number") {
+	                date.setYear(y);
+	            } else {
+	                throw new Error("Invalid date value: " + y);
+	            }
 	        }
 	    }
 	}
