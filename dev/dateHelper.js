@@ -1,5 +1,12 @@
 module.exports = function(date) {
 
+    if(!(typeof date === "object" &&
+        typeof date.getMonth === "function" &&
+        typeof date.getDate === "function" &&
+        typeof date.getFullYear === "function")) {
+            throw new Error("Invalid parameter");
+    }
+
     function getFormated(format) {
         return format
             .replace(/DD/g, getNumberForDisplay(date.getDate()))

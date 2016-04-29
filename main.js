@@ -21,4 +21,10 @@ d3.setDate(1);
 console.log(d3.getFormated("DD/MM/YYYY"));
 console.log(d3.getFormated("D/M/YYYY"));
 
+
+try {
+    helper(123)
+} catch (err) {
+    console.log(err);
+}
 //d3.setDate(-1);
