@@ -20,10 +20,16 @@ function parser(dateString, dateFormat) {
                     return "([0-9]{4})";
                     break;
             }
-        })
+        });
     var r = new RegExp("^" + dateRegexString + "$");
     console.log(r.toString())
-    return r.test(dateString);
+    var isValid =  r.test(dateString);
+
+    if(isValid) {
+
+    }
+
+    return isValid;
 }
 
 module.exports = parser;
