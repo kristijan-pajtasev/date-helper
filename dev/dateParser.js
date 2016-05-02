@@ -1,6 +1,4 @@
-"MM/DD/D/YYYY".match(/MM|M|DD|D|YYYY/g)
-
-function parser(dateString, dateFormat) {
+function isValid(dateString, dateFormat) {
     var dateValueRegexString =
         dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
             switch (match) {
@@ -22,15 +20,42 @@ function parser(dateString, dateFormat) {
             }
         });
 
-    var datePlaceholdersRegexString =
-        dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
-            return "(" + match + ")";
-        });
-
     var r = new RegExp("^" + dateValueRegexString + "$");
     var isValid =  r.test(dateString);
+    return isValid;
+}
 
-    if(isValid) {
+function parseToDate(dateString, dateFormat) {
+    var isValidDate = isValid(dateString, dateFormat);
+
+    if(isValidDate) { var dateValueRegexString =
+        dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
+            switch (match) {
+                case "M":
+                    return "([1-9]||1[0-1])";
+                    break;
+                case "MM":
+                    return "(0[1-9]||1[0-1])";
+                    break;
+                case "DD":
+                    return "(0[1-9]||[1-2][0-9]||3[0-1])";
+                    break;
+                case "D":
+                    return "([1-9]||[1-2][0-9]||3[0-1])";
+                    break;
+                case "YYYY":
+                    return "([0-9]{4})";
+                    break;
+            }
+        });
+
+        var r = new RegExp("^" + dateValueRegexString + "$");
+
+        var datePlaceholdersRegexString =
+            dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
+                return "(" + match + ")";
+            });
+
         var formatMatches = dateFormat.match(new RegExp("^" + datePlaceholdersRegexString + "$"));
         var dateMatches = dateString.match(r);
 
@@ -46,7 +71,7 @@ function parser(dateString, dateFormat) {
             switch(formatMatch) {
                 case "M":
                 case "MM":
-                    month = parseInt(dateMatch) + 1;
+                    month = parseInt(dateMatch) - 1;
                     break;
                 case "D":
                 case "DD":
@@ -57,13 +82,11 @@ function parser(dateString, dateFormat) {
                     break;
             }
         }
-
-        console.log(date);
-        console.log(month);
-        console.log(year);
+        return new Date(year, month, date);
     }
-
-    return isValid;
 }
 
-module.exports = parser;
+module.exports = {
+    isValid: isValid,
+    parseToDate: parseToDate
+};
