@@ -1,7 +1,7 @@
 "MM/DD/D/YYYY".match(/MM|M|DD|D|YYYY/g)
 
 function parser(dateString, dateFormat) {
-    var dateRegexString =
+    var dateValueRegexString =
         dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
             switch (match) {
                 case "M":
@@ -21,12 +21,46 @@ function parser(dateString, dateFormat) {
                     break;
             }
         });
-    var r = new RegExp("^" + dateRegexString + "$");
-    console.log(r.toString())
+
+    var datePlaceholdersRegexString =
+        dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
+            return "(" + match + ")";
+        });
+
+    var r = new RegExp("^" + dateValueRegexString + "$");
     var isValid =  r.test(dateString);
 
     if(isValid) {
+        var formatMatches = dateFormat.match(new RegExp("^" + datePlaceholdersRegexString + "$"));
+        var dateMatches = dateString.match(r);
 
+        var year;
+        var month;
+        var date;
+
+
+        for(var i = 0, length = formatMatches.length; i < length; i++) {
+            var dateMatch = dateMatches[i];
+            var formatMatch = formatMatches[i];
+
+            switch(formatMatch) {
+                case "M":
+                case "MM":
+                    month = parseInt(dateMatch) + 1;
+                    break;
+                case "D":
+                case "DD":
+                    date = parseInt(dateMatch);
+                    break;
+                case "YYYY":
+                    year = parseInt(dateMatch);
+                    break;
+            }
+        }
+
+        console.log(date);
+        console.log(month);
+        console.log(year);
     }
 
     return isValid;
