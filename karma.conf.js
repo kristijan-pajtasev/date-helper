@@ -16,7 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'dist/dateHelper.js',
-      'tests/date-helper-tests.js'
+        'tests/date-helper-tests.js'
     ],
 
 

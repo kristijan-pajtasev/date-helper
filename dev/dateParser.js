@@ -1,4 +1,4 @@
-function isValid(dateString, dateFormat) {
+function getRegexForDateFromat(dateFormat) {
     var dateValueRegexString =
         dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
             switch (match) {
@@ -20,7 +20,11 @@ function isValid(dateString, dateFormat) {
             }
         });
 
-    var r = new RegExp("^" + dateValueRegexString + "$");
+    return new RegExp("^" + dateValueRegexString + "$");
+}
+
+function isValid(dateString, dateFormat) {
+    var r = getRegexForDateFromat(dateFormat);
     var isValid =  r.test(dateString);
     return isValid;
 }
@@ -28,28 +32,8 @@ function isValid(dateString, dateFormat) {
 function parseToDate(dateString, dateFormat) {
     var isValidDate = isValid(dateString, dateFormat);
 
-    if(isValidDate) { var dateValueRegexString =
-        dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
-            switch (match) {
-                case "M":
-                    return "([1-9]||1[0-1])";
-                    break;
-                case "MM":
-                    return "(0[1-9]||1[0-1])";
-                    break;
-                case "DD":
-                    return "(0[1-9]||[1-2][0-9]||3[0-1])";
-                    break;
-                case "D":
-                    return "([1-9]||[1-2][0-9]||3[0-1])";
-                    break;
-                case "YYYY":
-                    return "([0-9]{4})";
-                    break;
-            }
-        });
-
-        var r = new RegExp("^" + dateValueRegexString + "$");
+    if(isValidDate) {
+        var r = getRegexForDateFromat(dateFormat);
 
         var datePlaceholdersRegexString =
             dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
