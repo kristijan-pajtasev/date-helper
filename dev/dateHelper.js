@@ -1,4 +1,10 @@
-module.exports = function(date) {
+module.exports = function(date, dateFormat) {
+
+
+    if(arguments.length == 2 && typeof date == "string" && typeof dateFormat == "string") {
+        var parser = require("./dateParser");
+        date = parser.parseToDate(date, dateFormat);
+    }
 
     if(!(typeof date === "object" &&
         typeof date.getMonth === "function" &&

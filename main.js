@@ -27,4 +27,7 @@ try {
 } catch (err) {
     console.log(err);
 }
+
+var stringDate = helper("20/11/2015", "DD/MM/YYYY");
+console.log(stringDate.getFormated("MM/DD/YYYY"));
 //d3.setDate(-1);
