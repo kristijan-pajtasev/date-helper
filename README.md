@@ -11,9 +11,19 @@ Still in development. Currently supports only getting formated date.
 ## Usage
 ```
 var dateHelper = require("date-helper-util");
+```
+
+### With date object
+```
 var date = new Date(2015, 1, 3);
 date = dateHelper(date);
 date.getFormated("DD/MM/YYYY"); // outputs 03/02/2015
+```
+
+### With date string and date format string
+```
+date = dateHelper("03/02/2015", "DD/MM/YYYY");
+date.getFormated("YYYY/MM/DD"); // outputs 2015/02/03
 ```
 
 ## Formats
