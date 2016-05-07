@@ -12,5 +12,19 @@ describe("Date helper ", function() {
         date = dateHelper(date);
         date.setMonth(3);
         assert.equal(date.getFormated("DD/MM/YYYY"), "02/03/2016");
-    })
+    });
+
+    it("will set correct date", function() {
+        var date = new Date(2016,1,2);
+        date = dateHelper(date);
+        date.setDate(3);
+        assert.equal(date.getFormated("DD/MM/YYYY"), "03/02/2016");
+    });
+
+    it("will set correct year", function() {
+        var date = new Date(2016,1,2);
+        date = dateHelper(date);
+        date.setYear(2015);
+        assert.equal(date.getFormated("DD/MM/YYYY"), "02/02/2015");
+    });
 });
