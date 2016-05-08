@@ -8,4 +8,11 @@ describe("Date helper ", function() {
         assert.equal(date.getMonth(), 1);
         assert.equal(date.getFullYear(), 2016);
     });
+
+    it("will return correct date for different format", function() {
+        var date = dateParser.parseToDate("2016/12/02", "YYYY/DD/MM")
+        assert.equal(date.getDate(), 12);
+        assert.equal(date.getMonth(), 1);
+        assert.equal(date.getFullYear(), 2016);
+    });
 });
