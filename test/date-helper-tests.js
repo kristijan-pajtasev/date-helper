@@ -27,4 +27,11 @@ describe("Date helper ", function() {
         date.setYear(2015);
         assert.equal(date.getFormated("DD/MM/YYYY"), "02/02/2015");
     });
+
+    it("will set correct without leading zeros", function() {
+        var date = new Date(2016,1,2);
+        date = dateHelper(date);
+        date.setYear(2015);
+        assert.equal(date.getFormated("D/M/YYYY"), "2/2/2015");
+    });
 });
