@@ -15,4 +15,11 @@ describe("Date helper ", function() {
         assert.equal(date.getMonth(), 1);
         assert.equal(date.getFullYear(), 2016);
     });
+
+    it("will return correct date for no zero prepend format", function() {
+        var date = dateParser.parseToDate("12/2/2016", "DD/M/YYYY")
+        assert.equal(date.getDate(), 12);
+        assert.equal(date.getMonth(), 1);
+        assert.equal(date.getFullYear(), 2016);
+    });
 });
