@@ -1,9 +1,10 @@
 module.exports = function(date, dateFormat) {
-
+    var parsedDate;
 
     if(arguments.length == 2 && typeof date == "string" && typeof dateFormat == "string") {
-        var parser = require("./dateParser");
-        date = parser.parseToDate(date, dateFormat);
+        var Parser = require("./dateParser");
+        parsedDate = new Parser(date, dateFormat);
+        date = parsedDate.parseToDate(date, dateFormat);
     }
 
     if(!(typeof date === "object" &&

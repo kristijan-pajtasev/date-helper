@@ -70,7 +70,9 @@ function parseToDate(dateString, dateFormat) {
     }
 }
 
-module.exports = {
-    isValid: isValid,
-    parseToDate: parseToDate
+module.exports = function(dateString, dateFormat) {
+    return {
+        isValid: isValid,
+        parseToDate: parseToDate
+    };
 };
