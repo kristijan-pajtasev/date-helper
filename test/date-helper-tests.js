@@ -34,4 +34,9 @@ describe("Date helper ", function() {
         date.setYear(2015);
         assert.equal(date.getFormated("D/M/YYYY"), "2/2/2015");
     });
+
+    it("will create from date string and format", function() {
+        var date = dateHelper("12/02/2015", "DD/MM/YYYY");
+        assert.equal(date.getFormated("YYYY/MM/DD"), "2015/02/12");
+    });
 });
