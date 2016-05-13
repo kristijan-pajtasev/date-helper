@@ -1,6 +1,6 @@
 {
   "name": "date-helper-util",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "",
   "main": "dev/dateHelper",
   "scripts": {

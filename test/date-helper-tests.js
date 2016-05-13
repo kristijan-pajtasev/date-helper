@@ -39,4 +39,9 @@ describe("Date helper ", function() {
         var date = dateHelper("12/02/2015", "DD/MM/YYYY");
         assert.equal(date.getFormated("YYYY/MM/DD"), "2015/02/12");
     });
+
+    it("will create from date string and format without leading zeros", function() {
+        var date = dateHelper("12/2/2015", "D/M/YYYY");
+        assert.equal(date.getFormated("YYYY/MM/DD"), "2015/02/12");
+    });
 });
