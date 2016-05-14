@@ -61,6 +61,4 @@ module.exports = function(date, dateFormat) {
             }
         }
     }
-}
-
-//console.log((new Date()).toString())
+};
