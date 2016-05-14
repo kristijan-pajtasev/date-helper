@@ -5,5 +5,38 @@
     </head>
     <body>
         <script type="text/javascript" src="../dist/dateHelper.js"></script>
+        <script type="text/javascript">
+            var d1 = dateHelper(new Date());
+            var d2 = dateHelper(new Date(new Date().setYear(2012)));
+            var d3 = dateHelper(new Date(2015, 1, 1));
+
+            console.log(d1.getDate());
+            console.log(d2.getDate());
+            console.log(d1.getDate());
+
+
+            console.log(d1.getFormated("DD/MM/YYYY"));
+            console.log(d1.getFormated("DD-MM-YYYY"));
+
+            console.log(d3.getFormated("DD/MM/YYYY"));
+            console.log(d3.getFormated("D/M/YYYY"));
+
+            d3.setYear(2015);
+            d3.setMonth(1);
+            d3.setDate(1);
+
+            console.log(d3.getFormated("DD/MM/YYYY"));
+            console.log(d3.getFormated("D/M/YYYY"));
+
+
+            try {
+                dateHelper(123)
+            } catch (err) {
+                console.log("there is an error");
+            }
+
+            var stringDate = dateHelper("20/11/2015", "DD/MM/YYYY");
+            console.log(stringDate.getFormated("MM/DD/YYYY"));
+        </script>
     </body>
 </html>

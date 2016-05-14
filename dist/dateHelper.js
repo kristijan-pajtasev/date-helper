@@ -46,11 +46,12 @@ var dateHelper =
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(date, dateFormat) {
-
+	    var parsedDate;
 
 	    if(arguments.length == 2 && typeof date == "string" && typeof dateFormat == "string") {
-	        var parser = __webpack_require__(1);
-	        date = parser.parseToDate(date, dateFormat);
+	        var Parser = __webpack_require__(1);
+	        parsedDate = new Parser(date, dateFormat);
+	        date = parsedDate.parseToDate(date, dateFormat);
 	    }
 
 	    if(!(typeof date === "object" &&
@@ -187,9 +188,11 @@ var dateHelper =
 	    }
 	}
 
-	module.exports = {
-	    isValid: isValid,
-	    parseToDate: parseToDate
+	module.exports = function(dateString, dateFormat) {
+	    return {
+	        isValid: isValid,
+	        parseToDate: parseToDate
+	    };
 	};
 
 /***/ }
