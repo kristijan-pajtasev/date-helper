@@ -23,21 +23,19 @@ function getRegexForDateFromat(dateFormat) {
     return new RegExp("^" + dateValueRegexString + "$");
 }
 
-function isValid(dateString, dateFormat) {
+function isValidFormat(dateString, dateFormat) {
     var r = getRegexForDateFromat(dateFormat);
-    var isValid =  r.test(dateString);
-
-
-
-    return isValid;
+    var isValidFormat =  r.test(dateString);
+    return isValidFormat;
 }
 
 function parseToDate(dateString, dateFormat) {
-    var isValidDate = isValid(dateString, dateFormat);
+    var isValidDateFormat = isValidFormat(dateString, dateFormat);
 
-    if(isValidDate) {
 
+    if(isValidDateFormat) {
         var dateValues = brakeStringDateForValues(dateString, dateFormat);
+
 
         return new Date(dateValues.year, dateValues.month, dateValues.date);
     }
@@ -84,7 +82,7 @@ function brakeStringDateForValues(dateString, dateFormat) {
 
 module.exports = function(dateString, dateFormat) {
     return {
-        isValid: isValid,
+        isValid: isValidFormat,
         parseToDate: parseToDate
     };
 };
