@@ -26,6 +26,9 @@ function getRegexForDateFromat(dateFormat) {
 function isValid(dateString, dateFormat) {
     var r = getRegexForDateFromat(dateFormat);
     var isValid =  r.test(dateString);
+
+
+
     return isValid;
 }
 
@@ -33,41 +36,50 @@ function parseToDate(dateString, dateFormat) {
     var isValidDate = isValid(dateString, dateFormat);
 
     if(isValidDate) {
-        var r = getRegexForDateFromat(dateFormat);
 
-        var datePlaceholdersRegexString =
-            dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
-                return "(" + match + ")";
-            });
+        var dateValues = brakeStringDateForValues(dateString, dateFormat);
 
-        var formatMatches = dateFormat.match(new RegExp("^" + datePlaceholdersRegexString + "$"));
-        var dateMatches = dateString.match(r);
-
-        var year;
-        var month;
-        var date;
-
-
-        for(var i = 0, length = formatMatches.length; i < length; i++) {
-            var dateMatch = dateMatches[i];
-            var formatMatch = formatMatches[i];
-
-            switch(formatMatch) {
-                case "M":
-                case "MM":
-                    month = parseInt(dateMatch) - 1;
-                    break;
-                case "D":
-                case "DD":
-                    date = parseInt(dateMatch);
-                    break;
-                case "YYYY":
-                    year = parseInt(dateMatch);
-                    break;
-            }
-        }
-        return new Date(year, month, date);
+        return new Date(dateValues.year, dateValues.month, dateValues.date);
     }
+}
+
+function brakeStringDateForValues(dateString, dateFormat) {
+
+    var r = getRegexForDateFromat(dateFormat);
+
+    var datePlaceholdersRegexString =
+        dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
+            return "(" + match + ")";
+        });
+
+    var formatMatches = dateFormat.match(new RegExp("^" + datePlaceholdersRegexString + "$"));
+    var dateMatches = dateString.match(r);
+
+    var year;
+    var month;
+    var date;
+
+
+    for(var i = 0, length = formatMatches.length; i < length; i++) {
+        var dateMatch = dateMatches[i];
+        var formatMatch = formatMatches[i];
+
+        switch(formatMatch) {
+            case "M":
+            case "MM":
+                month = parseInt(dateMatch) - 1;
+                break;
+            case "D":
+            case "DD":
+                date = parseInt(dateMatch);
+                break;
+            case "YYYY":
+                year = parseInt(dateMatch);
+                break;
+        }
+    }
+
+    return { year: year, month: month, date: date }
 }
 
 module.exports = function(dateString, dateFormat) {
