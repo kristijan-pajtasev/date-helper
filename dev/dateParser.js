@@ -25,8 +25,7 @@ function getRegexForDateFromat(dateFormat) {
 
 function isValidFormat(dateString, dateFormat) {
     var r = getRegexForDateFromat(dateFormat);
-    var isValidFormat =  r.test(dateString);
-    return isValidFormat;
+    return r.test(dateString);
 }
 
 function parseToDate(dateString, dateFormat) {
@@ -36,10 +35,10 @@ function parseToDate(dateString, dateFormat) {
     if(isValidDateFormat) {
         var dateValues = brakeStringDateForValues(dateString, dateFormat);
 
-
         return new Date(dateValues.year, dateValues.month, dateValues.date);
     }
 }
+
 
 function brakeStringDateForValues(dateString, dateFormat) {
 
