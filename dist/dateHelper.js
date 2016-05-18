@@ -108,9 +108,7 @@ var dateHelper =
 	            }
 	        }
 	    }
-	}
-
-	//console.log((new Date()).toString())
+	};
 
 /***/ },
 /* 1 */
@@ -141,56 +139,74 @@ var dateHelper =
 	    return new RegExp("^" + dateValueRegexString + "$");
 	}
 
-	function isValid(dateString, dateFormat) {
+	function isValidFormat(dateString, dateFormat) {
 	    var r = getRegexForDateFromat(dateFormat);
-	    var isValid =  r.test(dateString);
-	    return isValid;
+	    return r.test(dateString);
 	}
 
 	function parseToDate(dateString, dateFormat) {
-	    var isValidDate = isValid(dateString, dateFormat);
-
-	    if(isValidDate) {
-	        var r = getRegexForDateFromat(dateFormat);
-
-	        var datePlaceholdersRegexString =
-	            dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
-	                return "(" + match + ")";
-	            });
-
-	        var formatMatches = dateFormat.match(new RegExp("^" + datePlaceholdersRegexString + "$"));
-	        var dateMatches = dateString.match(r);
-
-	        var year;
-	        var month;
-	        var date;
+	    var isValidDateFormat = isValidFormat(dateString, dateFormat);
 
 
-	        for(var i = 0, length = formatMatches.length; i < length; i++) {
-	            var dateMatch = dateMatches[i];
-	            var formatMatch = formatMatches[i];
-
-	            switch(formatMatch) {
-	                case "M":
-	                case "MM":
-	                    month = parseInt(dateMatch) - 1;
-	                    break;
-	                case "D":
-	                case "DD":
-	                    date = parseInt(dateMatch);
-	                    break;
-	                case "YYYY":
-	                    year = parseInt(dateMatch);
-	                    break;
-	            }
+	    if(isValidDateFormat) {
+	        var dateValues = brakeStringDateForValues(dateString, dateFormat);
+	        if(dateValuesAreValidDate(dateValues.year, dateValues.month, dateValues.date)) {
+	            return new Date(dateValues.year, dateValues.month, dateValues.date);
 	        }
-	        return new Date(year, month, date);
 	    }
+	}
+
+	function dateValuesAreValidDate(year, month, date) {
+	    var dateObject = new Date(year, month, date);
+	    if(dateObject.getFullYear() == year && dateObject.getMonth() == month && dateObject.getDate() == date) {
+	        return true;
+	    }
+	    return false;
+	}
+
+
+	function brakeStringDateForValues(dateString, dateFormat) {
+
+	    var r = getRegexForDateFromat(dateFormat);
+
+	    var datePlaceholdersRegexString =
+	        dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
+	            return "(" + match + ")";
+	        });
+
+	    var formatMatches = dateFormat.match(new RegExp("^" + datePlaceholdersRegexString + "$"));
+	    var dateMatches = dateString.match(r);
+
+	    var year;
+	    var month;
+	    var date;
+
+
+	    for(var i = 0, length = formatMatches.length; i < length; i++) {
+	        var dateMatch = dateMatches[i];
+	        var formatMatch = formatMatches[i];
+
+	        switch(formatMatch) {
+	            case "M":
+	            case "MM":
+	                month = parseInt(dateMatch) - 1;
+	                break;
+	            case "D":
+	            case "DD":
+	                date = parseInt(dateMatch);
+	                break;
+	            case "YYYY":
+	                year = parseInt(dateMatch);
+	                break;
+	        }
+	    }
+
+	    return { year: year, month: month, date: date }
 	}
 
 	module.exports = function(dateString, dateFormat) {
 	    return {
-	        isValid: isValid,
+	        isValid: isValidFormat,
 	        parseToDate: parseToDate
 	    };
 	};
