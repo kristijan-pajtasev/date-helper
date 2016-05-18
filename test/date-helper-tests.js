@@ -1,5 +1,6 @@
 describe("Date helper ", function() {
     var assert = require('chai').assert;
+    var expect = require('chai').expect;
     var dateHelper = require("../dev/dateHelper");
 
     it("will return corect formated date", function() {
@@ -43,5 +44,9 @@ describe("Date helper ", function() {
     it("will create from date string and format without leading zeros", function() {
         var date = dateHelper("12/2/2015", "D/M/YYYY");
         assert.equal(date.getFormated("YYYY/MM/DD"), "2015/02/12");
+    });
+
+    it("will throw error if date is invalid has invalid value", function() {
+        expect(dateHelper.bind(dateHelper, "31/02/2015", "DD/MM/YYYY")).to.throw(Error);
     });
 });

@@ -34,9 +34,18 @@ function parseToDate(dateString, dateFormat) {
 
     if(isValidDateFormat) {
         var dateValues = brakeStringDateForValues(dateString, dateFormat);
-
-        return new Date(dateValues.year, dateValues.month, dateValues.date);
+        if(dateValuesAreValidDate(dateValues.year, dateValues.month, dateValues.date)) {
+            return new Date(dateValues.year, dateValues.month, dateValues.date);
+        }
     }
+}
+
+function dateValuesAreValidDate(year, month, date) {
+    var dateObject = new Date(year, month, date);
+    if(dateObject.getFullYear() == year && dateObject.getMonth() == month && dateObject.getDate() == date) {
+        return true;
+    }
+    return false;
 }
 
 
