@@ -49,4 +49,20 @@ describe("Date helper ", function() {
     it("will throw error if date is invalid has invalid value", function() {
         expect(dateHelper.bind(dateHelper, "31/02/2015", "DD/MM/YYYY")).to.throw(Error);
     });
+
+    it("will throw error if date string has invalid format", function() {
+        expect(dateHelper.bind(dateHelper, "12/2/2015", "DD/MM/YYYY")).to.throw(Error);
+    });
+
+    it("will throw error if date string has invalid format 2", function() {
+        expect(dateHelper.bind(dateHelper, "12/02", "DD/MM/YYYY")).to.throw(Error);
+    });
+
+    it("will throw error if date string has invalid format 2", function() {
+        expect(dateHelper.bind(dateHelper, undefined, "DD/MM/YYYY")).to.throw(Error);
+    });
+
+    it("will not throw format if date values are correct", function() {
+        expect(dateHelper.bind(dateHelper, "02/02/2016", "DD/MM/YYYY")).to.not.throw(Error);
+    });
 });
