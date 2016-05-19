@@ -65,4 +65,22 @@ describe("Date helper ", function() {
     it("will not throw format if date values are correct", function() {
         expect(dateHelper.bind(dateHelper, "02/02/2016", "DD/MM/YYYY")).to.not.throw(Error);
     });
+
+    it("will give true that first date is before second", function() {
+        var a = new Date(2016, 4, 1);
+        var b = new Date(2016, 4, 2);
+        assert.equal(dateHelper(a).isBefore(b), true);
+    });
+
+    it("will give true that first date is after second", function() {
+        var a = new Date(2016, 4, 3);
+        var b = new Date(2016, 4, 2);
+        assert.equal(dateHelper(a).isAfter(b), true);
+    });
+
+    it("will give true that first date is equal as second", function() {
+        var a = new Date(2016, 4, 2);
+        var b = new Date(2016, 4, 2);
+        assert.equal(dateHelper(a).isSameAs(b), true);
+    });
 });
