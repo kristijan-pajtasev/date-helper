@@ -31,6 +31,14 @@ module.exports = function(date, dateFormat) {
         }
     }
 
+    function isDate(date) {
+        return date != undefined &&
+            typeof date === "object" &&
+            typeof date.getMonth === "function" &&
+            typeof date.getDate === "function" &&
+            typeof date.getFullYear === "function";
+    }
+
 
     return {
         getDate: function() {
@@ -59,6 +67,27 @@ module.exports = function(date, dateFormat) {
             } else {
                 throw new Error("Invalid date value: " + y);
             }
+        },
+        isBefore: function(otherDate) {
+            if(isDate(otherDate)) {
+                return date.getTime() < otherDate.getTime();
+            }
+            throw new Error("Invalid parameter");
+
+        },
+        isAfter: function(otherDate) {
+            if(isDate(otherDate)) {
+                return date.getTime() > otherDate.getTime();
+            }
+            throw new Error("Invalid parameter");
+
+        },
+        isSameAs: function(otherDate){
+            if(isDate(otherDate)) {
+                return date.getTime() == otherDate.getTime();
+            }
+            throw new Error("Invalid parameter");
+
         }
     }
 };
