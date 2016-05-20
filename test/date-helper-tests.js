@@ -98,4 +98,11 @@ describe("Date helper ", function() {
         var a = new Date(2016, 4, 3);
         expect(dateHelper(a).isSameAs.bind("some string")).to.throw(Error);
     });
+
+    it("will return correct month name", function() {
+        var date = new Date(2016, 4, 3);
+        assert.equal(dateHelper(date).getFormated("DD/MMM/YYYY"), "03/June/2016");
+        date = new Date(2016, 3, 3);
+        assert.equal(dateHelper(date).getFormated("DD/MMM/YYYY"), "03/April/2016");
+    });
 });
