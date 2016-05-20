@@ -29,6 +29,7 @@ date.getFormated("YYYY/MM/DD"); // outputs 2015/02/03
 ## Formats
 - DD - date, if less then 10 prepends with 0
 - D - date, if less then 10 NOT prepended with 0
+- MMM - month as a month name (January, February, ...)
 - MM - month, if less then 10 prepends with 0
 - M - month, if less then 10 NOT prepended with 0
 - YYYY - full year
