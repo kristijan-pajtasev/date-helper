@@ -55,6 +55,27 @@ date.setMonth(1); // accepts 1-12
 date.setDate(1);
 ```
 
+### Is date before other date
+isBefore function can be used to check if date is before other.
+```
+var date = new Date(2016, 4, 3);
+dateHelper(date).isBefore(new Date(2016, 4, 4)); // true
+```
+
+### Is date after other date
+isAfter function can be used to check if date is after other.
+```
+var date = new Date(2016, 4, 3);
+dateHelper(date).isAfter(new Date(2016, 4, 2)); // true
+```
+
+### Is date same as other date
+isSameAs function can be used to check if date at same time as other.
+```
+var date = new Date(2016, 4, 3);
+dateHelper(date).isSameAs(new Date(2016, 4, 3)); // true
+```
+
 ## TODO
 - Tests
 - Hours, minutes and seconds
