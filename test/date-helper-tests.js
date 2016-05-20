@@ -83,4 +83,19 @@ describe("Date helper ", function() {
         var b = new Date(2016, 4, 2);
         assert.equal(dateHelper(a).isSameAs(b), true);
     });
+
+    it("will throw error if isBefore gets invalid parameter", function() {
+        var a = new Date(2016, 4, 1);
+        expect(dateHelper(a).isBefore.bind("some string")).to.throw(Error);
+    });
+
+    it("will throw error if isAfter gets invalid parameter", function() {
+        var a = new Date(2016, 4, 3);
+        expect(dateHelper(a).isAfter.bind("some string")).to.throw(Error);
+    });
+
+    it("will throw error if isAfter gets invalid parameter", function() {
+        var a = new Date(2016, 4, 3);
+        expect(dateHelper(a).isSameAs.bind("some string")).to.throw(Error);
+    });
 });
