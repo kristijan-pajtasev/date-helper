@@ -1,5 +1,7 @@
 module.exports = function(date, dateFormat) {
-    var parsedDate;
+    var parsedDate,
+        MONTHS = ["January", "February", "March", "April",
+                "June", "July", "August", "September", "October", "November", "December"];
 
     if(arguments.length == 2 && typeof date == "string" && typeof dateFormat == "string") {
         var Parser = require("./dateParser");
@@ -17,6 +19,7 @@ module.exports = function(date, dateFormat) {
     function getFormated(format) {
         return format
             .replace(/DD/g, getNumberForDisplay(date.getDate()))
+            .replace(/MMM/g, getNumberForDisplay(MONTHS[date.getMonth()]))
             .replace(/MM/g, getNumberForDisplay(date.getMonth() + 1))
             .replace(/YYYY/g, getNumberForDisplay(date.getFullYear()))
             .replace(/D/g, date.getDate() + "")
