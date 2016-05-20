@@ -58,6 +58,4 @@ date.setDate(1);
 ## TODO
 - Tests
 - Hours, minutes and seconds
-- Creating from string with placeholder
-- Getting and setting date values
 
