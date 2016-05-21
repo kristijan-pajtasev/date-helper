@@ -1,6 +1,6 @@
 {
   "name": "date-helper-util",
-  "version": "2.5.3",
+  "version": "2.5.4",
   "description": "",
   "main": "dev/dateHelper",
   "scripts": {
@@ -13,6 +13,6 @@
   "devDependencies": {
     "chai": "3.5.0"
   },
-  "author": "",
+  "author": "Kristijan Pajtasev",
   "license": "ISC"
 }
