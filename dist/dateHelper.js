@@ -45,6 +45,9 @@ var dateHelper =
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var MONTHS = ["January", "February", "March", "April",
+	    "June", "July", "August", "September", "October", "November", "December"];
+
 	module.exports = function(date, dateFormat) {
 	    var parsedDate;
 
@@ -64,6 +67,7 @@ var dateHelper =
 	    function getFormated(format) {
 	        return format
 	            .replace(/DD/g, getNumberForDisplay(date.getDate()))
+	            .replace(/MMM/g, getNumberForDisplay(MONTHS[date.getMonth()]))
 	            .replace(/MM/g, getNumberForDisplay(date.getMonth() + 1))
 	            .replace(/YYYY/g, getNumberForDisplay(date.getFullYear()))
 	            .replace(/D/g, date.getDate() + "")
@@ -84,6 +88,10 @@ var dateHelper =
 	            typeof date.getMonth === "function" &&
 	            typeof date.getDate === "function" &&
 	            typeof date.getFullYear === "function";
+	    }
+
+	    this.test = function() {
+	console.log("func")
 	    }
 
 
@@ -134,10 +142,20 @@ var dateHelper =
 	                return date.getTime() == otherDate.getTime();
 	            }
 	            throw new Error("Invalid parameter");
-
 	        }
 	    }
 	};
+
+	module.exports.config = {
+	    setMonthNames: function (names) {
+	        if(Array.isArray(names) && names.length == 12) {
+	            MONTHS = names;
+	        } else {
+	            throw new Error("Invalid parameter")
+	        }
+	    }
+	};
+
 
 /***/ },
 /* 1 */

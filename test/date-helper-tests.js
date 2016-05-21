@@ -2,6 +2,7 @@ describe("Date helper ", function() {
     var assert = require('chai').assert;
     var expect = require('chai').expect;
     var dateHelper = require("../dev/dateHelper");
+    var dateHelperConfig = require("../dev/dateHelper").config;
 
     it("will return corect formated date", function() {
         var date = new Date(2016,1,2);

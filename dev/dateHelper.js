@@ -1,7 +1,8 @@
+var MONTHS = ["January", "February", "March", "April",
+    "June", "July", "August", "September", "October", "November", "December"];
+
 module.exports = function(date, dateFormat) {
-    var parsedDate,
-        MONTHS = ["January", "February", "March", "April",
-                "June", "July", "August", "September", "October", "November", "December"];
+    var parsedDate;
 
     if(arguments.length == 2 && typeof date == "string" && typeof dateFormat == "string") {
         var Parser = require("./dateParser");
@@ -40,6 +41,10 @@ module.exports = function(date, dateFormat) {
             typeof date.getMonth === "function" &&
             typeof date.getDate === "function" &&
             typeof date.getFullYear === "function";
+    }
+
+    this.test = function() {
+console.log("func")
     }
 
 
@@ -90,7 +95,16 @@ module.exports = function(date, dateFormat) {
                 return date.getTime() == otherDate.getTime();
             }
             throw new Error("Invalid parameter");
+        }
+    }
+};
 
+module.exports.config = {
+    setMonthNames: function (names) {
+        if(Array.isArray(names) && names.length == 12) {
+            MONTHS = names;
+        } else {
+            throw new Error("Invalid parameter")
         }
     }
 };
