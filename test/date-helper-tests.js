@@ -106,4 +106,13 @@ describe("Date helper ", function() {
         date = new Date(2016, 3, 3);
         assert.equal(dateHelper(date).getFormated("DD/MMM/YYYY"), "03/April/2016");
     });
+
+    it("will use correct month name transaltion", function() {
+        dateHelperConfig.setMonthNames(["Sijecan", "Veljaca", "Ozujak", "Travanj",
+        "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"])
+        var date = new Date(2016, 4, 3);
+        assert.equal(dateHelper(date).getFormated("DD/MMM/YYYY"), "03/Svibanj/2016");
+        date = new Date(2016, 3, 3);
+        assert.equal(dateHelper(date).getFormated("DD/MMM/YYYY"), "03/Travanj/2016");
+    });
 });
