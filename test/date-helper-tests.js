@@ -115,4 +115,10 @@ describe("Date helper ", function() {
         date = new Date(2016, 3, 3);
         assert.equal(dateHelper(date).getFormated("DD/MMM/YYYY"), "03/Travanj/2016");
     });
+
+    it("will will throw error if incorrect parameter is passed for month names", function() {
+        var incorrectParameter = ["Veljaca", "Ozujak", "Travanj",
+            "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"];
+        expect(dateHelperConfig.setMonthNames.bind(incorrectParameter)).to.throw(Error);
+    });
 });
