@@ -77,6 +77,26 @@ var date = new Date(2016, 4, 3);
 dateHelper(date).isSameAs(new Date(2016, 4, 3)); // true
 ```
 
+### i18n
+By using configuration month names can be set
+
+#### Node module
+```
+var dateHelperConfig = require("../dev/dateHelper").config;
+dateHelperConfig.setMonthNames(["Sijecan", "Veljaca", "Ozujak", "Travanj",
+    "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"])
+var date = new Date(2016, 4, 3);
+dateHelper(date).getFormated("DD/MMM/YYYY"); // "03/Svibanj/2016"
+```
+
+#### Browser
+```
+dateHelper.config.setMonthNames(["Sijecan", "Veljaca", "Ozujak", "Travanj",
+    "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"])
+var date = new Date(2016, 4, 3);
+dateHelper(date).getFormated("DD/MMM/YYYY"); // "03/Svibanj/2016"
+```
+
 ## TODO
 - Tests
 - Hours, minutes and seconds
