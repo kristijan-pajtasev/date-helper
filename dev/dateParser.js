@@ -42,10 +42,7 @@ function parseToDate(dateString, dateFormat) {
 
 function dateValuesAreValidDate(year, month, date) {
     var dateObject = new Date(year, month, date);
-    if(dateObject.getFullYear() == year && dateObject.getMonth() == month && dateObject.getDate() == date) {
-        return true;
-    }
-    return false;
+    return !!(dateObject.getFullYear() == year && dateObject.getMonth() == month && dateObject.getDate() == date);
 }
 
 
@@ -88,7 +85,7 @@ function brakeStringDateForValues(dateString, dateFormat) {
     return { year: year, month: month, date: date }
 }
 
-module.exports = function(dateString, dateFormat) {
+module.exports = function() {
     return {
         isValid: isValidFormat,
         parseToDate: parseToDate
