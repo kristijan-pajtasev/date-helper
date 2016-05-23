@@ -35,8 +35,6 @@ date.getFormated("YYYY/MM/DD"); // outputs 2015/02/03
 - YYYY - full year
 
 ## Setting date values
-Because of the way JavaScript Date object works correct
-order is to set first year, then month and then day.
 ```
 var date = dateHelper(new Date());
 ```
@@ -55,6 +53,26 @@ date.setMonth(1); // accepts 1-12
 ```
 date.setDate(1);
 ```
+
+## Getting date values
+
+## Getting year
+```
+date.getYear();
+```
+
+## Getting month
+Returns values 1-12 and not like native JavaScript 0-11
+```
+date.getMonth();
+```
+
+## Getting date
+```
+date.getDate();
+```
+
+
 
 ### Is date before other date
 isBefore function can be used to check if date is before other.
