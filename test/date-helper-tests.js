@@ -142,4 +142,34 @@ describe("Date helper ", function() {
         dateHelperDate.setYear(2016);
         assert.equal(dateHelperDate.getYear(), 2016);
     });
+
+    it("will add days correctly", function() {
+        var date = new Date(2015, 5, 12);
+        var dateHelperDate = dateHelper(date);
+        dateHelperDate.add("day", 1);
+        assert.equal(dateHelperDate.getDate(), 13);
+
+        dateHelperDate.add("day", 5);
+        assert.equal(dateHelperDate.getDate(), 18);
+    });
+
+    it("will add months correctly", function() {
+        var date = new Date(2015, 5, 12);
+        var dateHelperDate = dateHelper(date);
+        dateHelperDate.add("month", 1);
+        assert.equal(dateHelperDate.getMonth(), 7);
+
+        dateHelperDate.add("month", 6);
+        assert.equal(dateHelperDate.getMonth(), 1);
+    });
+
+    it("will add months correctly", function() {
+        var date = new Date(2015, 5, 12);
+        var dateHelperDate = dateHelper(date);
+        dateHelperDate.add("year", 1);
+        assert.equal(dateHelperDate.getYear(), 2016);
+
+        dateHelperDate.add("year", 10);
+        assert.equal(dateHelperDate.getYear(), 2026);
+    });
 });
