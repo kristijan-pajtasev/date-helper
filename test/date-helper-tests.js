@@ -122,21 +122,21 @@ describe("Date helper ", function() {
         expect(dateHelperConfig.setMonthNames.bind(incorrectParameter)).to.throw(Error);
     });
 
-    it("will set correct date value", function() {
+    it("will get correct date value", function() {
         var date = new Date(2015, 5, 12);
         var dateHelperDate = dateHelper(date);
         dateHelperDate.setDate(18);
         assert.equal(dateHelperDate.getDate(), 18);
     });
 
-    it("will set correct month value", function() {
+    it("will get correct month value", function() {
         var date = new Date(2015, 5, 12);
         var dateHelperDate = dateHelper(date);
-        dateHelperDate.setMonth(11);
-        assert.equal(dateHelperDate.getMonth(), 11);
+        dateHelperDate.setMonth(6);
+        assert.equal(dateHelperDate.getMonth(), 6);
     });
 
-    it("will set correct year value", function() {
+    it("will get correct year value", function() {
         var date = new Date(2015, 5, 12);
         var dateHelperDate = dateHelper(date);
         dateHelperDate.setYear(2016);
