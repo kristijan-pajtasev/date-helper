@@ -72,6 +72,14 @@ date.getMonth();
 date.getDate();
 ```
 
+## Adding values to date
+Values can be added by calling .add function with type and amount parameters. Type is string day, month or year.
+```
+date = dateHelper(new Date());
+date.add("day", 1);
+date.add("month", 1);
+date.add("year", 1);
+```
 
 
 ### Is date before other date
