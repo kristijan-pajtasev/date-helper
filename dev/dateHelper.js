@@ -49,7 +49,7 @@ console.log("func")
 
 
     return {
-        getDate: function() {
+        getDateObject: function() {
             return date;
         },
         getFormated: function(format) {
@@ -75,6 +75,15 @@ console.log("func")
             } else {
                 throw new Error("Invalid date value: " + y);
             }
+        },
+        getDate: function(d) {
+            return date.getDate();
+        },
+        getMonth: function() {
+            return date.getMonth() + 1;
+        },
+        getYear: function() {
+            return date.getFullYear();
         },
         isBefore: function(otherDate) {
             if(isDate(otherDate)) {
