@@ -104,6 +104,22 @@ console.log("func")
                 return date.getTime() == otherDate.getTime();
             }
             throw new Error("Invalid parameter");
+        },
+        add: function (type, amount) {
+            switch(type) {
+                case "day":
+                    var currentDay = date.getDate();
+                    date.setDate(currentDay + amount);
+                    break;
+                case "month":
+                    var currentMonth = date.getMonth();
+                    date.setMonth(currentMonth + amount);
+                    break;
+                case "year":
+                    var currentYear = date.getFullYear();
+                    date.setYear(currentYear + amount);
+                    break;
+            }
         }
     }
 };
