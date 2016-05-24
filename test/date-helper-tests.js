@@ -163,7 +163,7 @@ describe("Date helper ", function() {
         assert.equal(dateHelperDate.getMonth(), 1);
     });
 
-    it("will add months correctly", function() {
+    it("will add years correctly", function() {
         var date = new Date(2015, 5, 12);
         var dateHelperDate = dateHelper(date);
         dateHelperDate.add("year", 1);

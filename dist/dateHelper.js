@@ -167,6 +167,24 @@ var dateHelper =
 	                    date.setYear(currentYear + amount);
 	                    break;
 	            }
+	        },
+	        sub: function (type, amount) {
+	            switch(type) {
+	                case "day":
+	                    var currentDay = date.getDate();
+	                    console.log(currentDay)
+	                    console.log(amount)
+	                    date.setDate(currentDay - amount);
+	                    break;
+	                case "month":
+	                    var currentMonth = date.getMonth();
+	                    date.setMonth(currentMonth - amount);
+	                    break;
+	                case "year":
+	                    var currentYear = date.getFullYear();
+	                    date.setYear(currentYear - amount);
+	                    break;
+	            }
 	        }
 	    }
 	};
