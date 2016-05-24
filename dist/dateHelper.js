@@ -96,7 +96,7 @@ var dateHelper =
 
 
 	    return {
-	        getDate: function() {
+	        getDateObject: function() {
 	            return date;
 	        },
 	        getFormated: function(format) {
@@ -123,6 +123,15 @@ var dateHelper =
 	                throw new Error("Invalid date value: " + y);
 	            }
 	        },
+	        getDate: function(d) {
+	            return date.getDate();
+	        },
+	        getMonth: function() {
+	            return date.getMonth() + 1;
+	        },
+	        getYear: function() {
+	            return date.getFullYear();
+	        },
 	        isBefore: function(otherDate) {
 	            if(isDate(otherDate)) {
 	                return date.getTime() < otherDate.getTime();
@@ -142,6 +151,22 @@ var dateHelper =
 	                return date.getTime() == otherDate.getTime();
 	            }
 	            throw new Error("Invalid parameter");
+	        },
+	        add: function (type, amount) {
+	            switch(type) {
+	                case "day":
+	                    var currentDay = date.getDate();
+	                    date.setDate(currentDay + amount);
+	                    break;
+	                case "month":
+	                    var currentMonth = date.getMonth();
+	                    date.setMonth(currentMonth + amount);
+	                    break;
+	                case "year":
+	                    var currentYear = date.getFullYear();
+	                    date.setYear(currentYear + amount);
+	                    break;
+	            }
 	        }
 	    }
 	};
@@ -205,10 +230,7 @@ var dateHelper =
 
 	function dateValuesAreValidDate(year, month, date) {
 	    var dateObject = new Date(year, month, date);
-	    if(dateObject.getFullYear() == year && dateObject.getMonth() == month && dateObject.getDate() == date) {
-	        return true;
-	    }
-	    return false;
+	    return !!(dateObject.getFullYear() == year && dateObject.getMonth() == month && dateObject.getDate() == date);
 	}
 
 
@@ -251,7 +273,7 @@ var dateHelper =
 	    return { year: year, month: month, date: date }
 	}
 
-	module.exports = function(dateString, dateFormat) {
+	module.exports = function() {
 	    return {
 	        isValid: isValidFormat,
 	        parseToDate: parseToDate
