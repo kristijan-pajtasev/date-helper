@@ -80,7 +80,6 @@ date.add("day", 1);
 date.add("month", 1);
 date.add("year", 1);
 ```
-```
 
 ## Subtracting values to date
 Values can be subtracted by calling .sub function with type and amount parameters. Type is string day, month or year.
