@@ -106,6 +106,10 @@ console.log("func")
             throw new Error("Invalid parameter");
         },
         add: function (type, amount) {
+            if(typeof amount != "number") {
+                throw new Error("Invalid type parameter");
+            }
+
             switch(type) {
                 case "day":
                     var currentDay = date.getDate();
