@@ -124,11 +124,13 @@ console.log("func")
             }
         },
         sub: function (type, amount) {
+            if(typeof amount != "number") {
+                throw new Error("Invalid type parameter");
+            }
+
             switch(type) {
                 case "day":
                     var currentDay = date.getDate();
-                    console.log(currentDay)
-                    console.log(amount)
                     date.setDate(currentDay - amount);
                     break;
                 case "month":
