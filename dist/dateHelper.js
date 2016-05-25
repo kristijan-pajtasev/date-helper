@@ -166,6 +166,8 @@ var dateHelper =
 	                    var currentYear = date.getFullYear();
 	                    date.setYear(currentYear + amount);
 	                    break;
+	                default:
+	                    throw new Error("Invalid type parameter");
 	            }
 	        },
 	        sub: function (type, amount) {
@@ -184,6 +186,8 @@ var dateHelper =
 	                    var currentYear = date.getFullYear();
 	                    date.setYear(currentYear - amount);
 	                    break;
+	                default:
+	                    throw new Error("Invalid type parameter");
 	            }
 	        }
 	    }
