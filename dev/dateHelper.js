@@ -43,11 +43,6 @@ module.exports = function(date, dateFormat) {
             typeof date.getFullYear === "function";
     }
 
-    this.test = function() {
-console.log("func")
-    }
-
-
     return {
         getDateObject: function() {
             return date;
