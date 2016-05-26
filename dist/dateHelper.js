@@ -90,11 +90,6 @@ var dateHelper =
 	            typeof date.getFullYear === "function";
 	    }
 
-	    this.test = function() {
-	console.log("func")
-	    }
-
-
 	    return {
 	        getDateObject: function() {
 	            return date;
