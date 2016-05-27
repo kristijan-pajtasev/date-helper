@@ -101,7 +101,7 @@ module.exports = function(date, dateFormat) {
             throw new Error("Invalid parameter");
         },
         add: function (type, amount) {
-            if(typeof amount != "number") {
+            if(typeof amount != "number" || (typeof amount == "number" && amount < 1)) {
                 throw new Error("Invalid type parameter");
             }
 
