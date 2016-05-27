@@ -123,7 +123,7 @@ module.exports = function(date, dateFormat) {
             }
         },
         sub: function (type, amount) {
-            if(typeof amount != "number") {
+            if(typeof amount != "number" || (typeof amount == "number" && amount < 1)) {
                 throw new Error("Invalid type parameter");
             }
 
