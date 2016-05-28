@@ -109,7 +109,7 @@ describe("Date helper ", function() {
 
     it("will use correct month name transaltion", function() {
         dateHelperConfig.setMonthNames(["Sijecan", "Veljaca", "Ozujak", "Travanj",
-        "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"])
+        "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"]);
         var date = new Date(2016, 4, 3);
         assert.equal(dateHelper(date).getFormated("DD/MMM/YYYY"), "03/Svibanj/2016");
         date = new Date(2016, 3, 3);
@@ -203,5 +203,10 @@ describe("Date helper ", function() {
 
         dateHelperDate.sub("year", 10);
         assert.equal(dateHelperDate.getYear(), 2004);
+    });
+
+    it("will throw error if add gets invalid type param", function() {
+        var dateHelperDate = dateHelper(new Date(2015, 5, 12));
+        expect(dateHelperDate.add.bind("invalidValue", 1)).to.throw(Error);
     });
 });
