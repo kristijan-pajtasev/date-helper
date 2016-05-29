@@ -209,4 +209,9 @@ describe("Date helper ", function() {
         var dateHelperDate = dateHelper(new Date(2015, 5, 12));
         expect(dateHelperDate.add.bind("invalidValue", 1)).to.throw(Error);
     });
+
+    it("will throw error if sub gets invalid type param", function() {
+        var dateHelperDate = dateHelper(new Date(2015, 5, 12));
+        expect(dateHelperDate.sub.bind("invalidValue", 1)).to.throw(Error);
+    });
 });
