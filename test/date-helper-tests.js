@@ -87,17 +87,17 @@ describe("Date helper ", function() {
 
     it("will throw error if isBefore gets invalid parameter", function() {
         var a = new Date(2016, 4, 1);
-        expect(dateHelper(a).isBefore.bind("some string")).to.throw(Error);
+        expect(dateHelper(a).isBefore.bind(null, "some string")).to.throw(Error);
     });
 
     it("will throw error if isAfter gets invalid parameter", function() {
         var a = new Date(2016, 4, 3);
-        expect(dateHelper(a).isAfter.bind("some string")).to.throw(Error);
+        expect(dateHelper(a).isAfter.bind(null, "some string")).to.throw(Error);
     });
 
     it("will throw error if isAfter gets invalid parameter", function() {
         var a = new Date(2016, 4, 3);
-        expect(dateHelper(a).isSameAs.bind("some string")).to.throw(Error);
+        expect(dateHelper(a).isSameAs.bind(null, "some string")).to.throw(Error);
     });
 
     it("will return correct month name", function() {
@@ -119,7 +119,7 @@ describe("Date helper ", function() {
     it("will throw error if incorrect parameter is passed for month names", function() {
         var incorrectParameter = ["Veljaca", "Ozujak", "Travanj",
             "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"];
-        expect(dateHelperConfig.setMonthNames.bind(incorrectParameter)).to.throw(Error);
+        expect(dateHelperConfig.setMonthNames.bind(null, incorrectParameter)).to.throw(Error);
     });
 
     it("will get correct date value", function() {
