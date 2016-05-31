@@ -229,4 +229,9 @@ describe("Date helper ", function() {
         var dateHelperDate = dateHelper(new Date(2015, 5, 12));
         expect(dateHelperDate.sub.bind(null, "year", -11)).to.throw(Error);
     });
+
+    it("will throw error if sub gets float as amount param", function() {
+        var dateHelperDate = dateHelper(new Date(2015, 5, 12));
+        expect(dateHelperDate.sub.bind(null, "year", 2.5)).to.throw(Error);
+    });
 });
