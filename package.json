@@ -1,6 +1,6 @@
 {
   "name": "date-helper-util",
-  "version": "3.3.25",
+  "version": "3.3.26",
   "description": "",
   "main": "dev/dateHelper",
   "scripts": {
@@ -13,6 +13,16 @@
   "devDependencies": {
     "chai": "3.5.0"
   },
+  "keywords": [
+    "datepicker",
+    "date",
+    "dates",
+    "javascript",
+    "module",
+    "browser",
+    "formater",
+    "parser"
+  ],
   "author": "Kristijan Pajtasev",
   "license": "ISC"
 }
