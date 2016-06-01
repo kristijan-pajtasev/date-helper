@@ -225,6 +225,11 @@ describe("Date helper ", function() {
         expect(dateHelperDate.add.bind(null, "year", -11)).to.throw(Error);
     });
 
+    it("will throw error if add gets float as amount param", function() {
+        var dateHelperDate = dateHelper(new Date(2015, 5, 12));
+        expect(dateHelperDate.add.bind(null, "year", 2.5)).to.throw(Error);
+    });
+
     it("will throw error if sub gets invalid type param", function() {
         var dateHelperDate = dateHelper(new Date(2015, 5, 12));
         expect(dateHelperDate.sub.bind(null, "invalidValue", 1)).to.throw(Error);
