@@ -1,5 +1,5 @@
 {
-  "name": "date-helper-util",
+  "name": "@kpajtasev/date-util",
   "version": "3.3.27",
   "description": "",
   "main": "dev/dateHelper",
