@@ -1,6 +1,6 @@
 {
   "name": "@kpajtasev/date-util",
-  "version": "3.3.27",
+  "version": "4.0.0",
   "description": "",
   "main": "dev/dateHelper",
   "scripts": {
@@ -12,6 +12,9 @@
   },
   "devDependencies": {
     "chai": "3.5.0"
+  },
+  "dependencies": {
+    "@kpajtasev/date-parser": "1.0.0"
   },
   "keywords": [
     "datepicker",
