@@ -16,6 +16,17 @@ describe("Date helper ", function() {
         assert.equal(date.getFormated("DD/MM/YYYY"), "02/03/2016");
     });
 
+    it("will set correct december from string", function() {
+        date = dateHelper("02/12/2016", "DD/MM/YYYY");
+        assert.equal(date.getFormated("DD/MM/YYYY"), "02/12/2016");
+    });
+
+    it("will set correct december from date", function() {
+        var date = new Date(2016,11,2);
+        date = dateHelper(date);
+        assert.equal(date.getFormated("DD/MM/YYYY"), "02/12/2016");
+    });
+
     it("will set correct date", function() {
         var date = new Date(2016,1,2);
         date = dateHelper(date);

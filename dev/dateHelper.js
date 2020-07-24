@@ -4,6 +4,7 @@ var MONTHS = ["January", "February", "March", "April",
 module.exports = function(date, dateFormat) {
     var parsedDate;
 
+
     if(arguments.length == 2 && typeof date == "string" && typeof dateFormat == "string") {
         var Parser = require("./dateParser");
         parsedDate = new Parser(date, dateFormat);

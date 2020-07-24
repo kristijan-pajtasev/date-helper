@@ -3,10 +3,10 @@ function getRegexForDateFromat(dateFormat) {
         dateFormat.replace(/MM|M|DD|D|YYYY/g, function(match, position, original) {
             switch (match) {
                 case "M":
-                    return "([1-9]||1[0-1])";
+                    return "([1-9]||1[0-2])";
                     break;
                 case "MM":
-                    return "(0[1-9]||1[0-1])";
+                    return "(0[1-9]||1[0-2])";
                     break;
                 case "DD":
                     return "(0[1-9]||[1-2][0-9]||3[0-1])";
@@ -30,7 +30,6 @@ function isValidFormat(dateString, dateFormat) {
 
 function parseToDate(dateString, dateFormat) {
     var isValidDateFormat = isValidFormat(dateString, dateFormat);
-
 
     if(isValidDateFormat) {
         var dateValues = brakeStringDateForValues(dateString, dateFormat);
